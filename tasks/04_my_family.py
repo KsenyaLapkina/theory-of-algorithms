@@ -26,3 +26,4 @@ for member in my_family_height:
     total_height += member[1]
 
 print('Общий рост моей семьи -', total_height, 'см')
+
