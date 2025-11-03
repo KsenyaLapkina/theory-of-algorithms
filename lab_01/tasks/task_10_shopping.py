@@ -1,57 +1,46 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Есть словарь магазинов с распродажами
-
-shops = {
-    'ашан':
-        [
+def create_sweets_price_dict():
+    """Создает словарь цен на сладости с минимальными ценами по магазинам"""
+    shops = {
+        'ашан': [
             {'name': 'печенье', 'price': 10.99},
             {'name': 'конфеты', 'price': 34.99},
             {'name': 'карамель', 'price': 45.99},
             {'name': 'пирожное', 'price': 67.99}
         ],
-    'пятерочка':
-        [
+        'пятерочка': [
             {'name': 'печенье', 'price': 9.99},
             {'name': 'конфеты', 'price': 32.99},
             {'name': 'карамель', 'price': 46.99},
             {'name': 'пирожное', 'price': 59.99}
         ],
-    'магнит':
-        [
+        'магнит': [
             {'name': 'печенье', 'price': 11.99},
             {'name': 'конфеты', 'price': 30.99},
             {'name': 'карамель', 'price': 41.99},
             {'name': 'пирожное', 'price': 62.99}
         ],
-}
+    }
 
-# Создайте словарь цен на продкты следующего вида (писать прямо в коде)
-sweets = {
-    'печенье': [
-        {'shop': 'пятерочка', 'price': 9.99},
-        {'shop': 'ашан', 'price': 10.99},
-    ],
-    'конфеты': [
-        {'shop': 'магнит', 'price': 30.99},
-        {'shop': 'пятерочка', 'price': 32.99},
-    ],
-    'карамель': [
-        {'shop': 'магнит', 'price': 41.99},
-        {'shop': 'ашан', 'price': 45.99},
-    ],
-    'пирожное': [
-        {'shop': 'пятерочка', 'price': 59.99},
-        {'shop': 'магнит', 'price': 62.99},
-    ],
-}
-# Указать надо только по 2 магазина с минимальными ценами
-# Вывод словаря sweets
-print("Словарь цен на сладости:")
-
-for sweet, prices in sweets.items():
-    print(f"{sweet.capitalize()}:")
-    for shop_info in prices:
-        print(f"  - {shop_info['shop']}: {shop_info['price']} руб")
-    print()
+    # Создаем словарь для хранения всех цен по продуктам
+    product_prices = {}
+    
+    for shop_name, products in shops.items():
+        for product in products:
+            name = product['name']
+            price = product['price']
+            
+            if name not in product_prices:
+                product_prices[name] = []
+            
+            product_prices[name].append({'shop': shop_name, 'price': price})
+    
+    # Сортируем цены по возрастанию и берем 2 минимальные
+    sweets = {}
+    for product_name, prices in product_prices.items():
+        sorted_prices = sorted(prices, key=lambda x: x['price'])
+        sweets[product_name] = sorted_prices[:2]
+    
+    return sweets
