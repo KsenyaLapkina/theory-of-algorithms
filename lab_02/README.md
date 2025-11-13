@@ -1,4 +1,3 @@
-@'
 # Калькулятор пошива одежды
 
 ## Описание
@@ -27,24 +26,24 @@
 - Docker-контейнеризация: Готовая сборка приложения
 
 ## Обычный запуск 
-# Клонирование и установка
+### Клонирование и установка
 git clone <repository-url>
 cd lab_02
 
-# Создание виртуального окружения
+### Создание виртуального окружения
 python -m venv venv
 venv\Scripts\activate     # Windows
 
-# Установка зависимостей
+### Установка зависимостей
 pip install -r requirements.txt
 
-# Запуск тестов
+### Запуск тестов
 python -m pytest tests/ -v
 
-# Запуск приложения
+### Запуск приложения
 python main.py
 
-# Сборка и запуск в Docker
+### Сборка и запуск в Docker
 docker build -t clothing-calculator .
 docker run -it --rm clothing-calculator
 
