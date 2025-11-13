@@ -36,8 +36,7 @@ python main.py
 - Python 3.8+ документация
 - pytest документация
 
-## Выводы
-Освоены принципы модульного программирования и организации кода.
+
 ```
 
 ## Запуск тестов
@@ -49,4 +48,8 @@ python -m pytest tests/ -v
 python -m pytest tests/test_tasks.py::TestTask1 -v
 
 # Запуск с подробным выводом
-python -m pytest tests/ -v --tb=short```
+python -m pytest tests/ -v --tb=short
+```
+
+## Выводы
+Освоены принципы модульного программирования и организации кода.
