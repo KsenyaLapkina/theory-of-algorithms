@@ -1,7 +1,7 @@
 from .garments import Garment
 
 class Jacket(Garment):
-    def __init__(self, size, has_liner=False, buttons_count=3, fabric_cost_per_m2=300.0):  # было 500
+    def __init__(self, size, has_liner=False, buttons_count=3, fabric_cost_per_m2=300.0):
         super().__init__("Пиджак", size, fabric_cost_per_m2)
         self.has_liner = has_liner
         self.buttons_count = buttons_count
@@ -13,16 +13,16 @@ class Jacket(Garment):
         self._fabric_consumption = base_consumption + liner_consumption
         return self._fabric_consumption
 
-    def calculate_sewing_cost(self, labor_cost=1500.0):  # было 2000
+    def calculate_sewing_cost(self, labor_cost=1500.0): 
         fabric_cost = self.calculate_fabric_cost()
-        buttons_cost = self.buttons_count * 50  # было 100
+        buttons_cost = self.buttons_count * 50  
         return fabric_cost + labor_cost + buttons_cost
 
     def __str__(self):
         return f"{super().__str__()}, расход ткани: {self._fabric_consumption:.2f} м², подклад: {'да' if self.has_liner else 'нет'}"
 
 class Pants(Garment):
-    def __init__(self, size, pants_type="classic", has_belt_loops=True, fabric_cost_per_m2=250.0):  # было 400
+    def __init__(self, size, pants_type="classic", has_belt_loops=True, fabric_cost_per_m2=250.0):
         super().__init__("Брюки", size, fabric_cost_per_m2)
         self.pants_type = pants_type
         self.has_belt_loops = has_belt_loops
@@ -31,7 +31,7 @@ class Pants(Garment):
     def calculate_fabric_consumption(self):
         base_consumption = 1.2 * self.size
         
-        # Модификаторы расхода для разных типов брюк
+        # расход для разных типов брюк
         type_modifiers = {
             "classic": 1.0,      # классические
             "slim": 0.9,         # зауженные
@@ -43,9 +43,9 @@ class Pants(Garment):
         self._fabric_consumption = base_consumption * modifier
         return self._fabric_consumption
 
-    def calculate_sewing_cost(self, labor_cost=1200.0):  # было 1500
+    def calculate_sewing_cost(self, labor_cost=1200.0): 
         fabric_cost = self.calculate_fabric_cost()
-        loops_cost = 200 if self.has_belt_loops else 0  # было 300
+        loops_cost = 200 if self.has_belt_loops else 0 
         return fabric_cost + labor_cost + loops_cost
 
     def __str__(self):
