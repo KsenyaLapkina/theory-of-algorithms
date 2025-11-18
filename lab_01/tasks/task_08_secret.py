@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 def decrypt_secret_message():
-    """Расшифровывает секретное сообщение по заданным правилам"""
+
     secret_message = [
         'квевтфпп6щ3стмзалтнмаршгб5длгуча',
         'дьсеы6лц2бане4т64ь4б3ущея6втщл6б',
@@ -10,12 +10,9 @@ def decrypt_secret_message():
         'ьд5фму3ежородт9г686буиимыкучшсал',
         'бсц59мегщ2лятьаьгенедыв9фк9ехб1а',
     ]
-
-    # Расшифровка по правилам (номера букв, а не индексы)
-    word1 = secret_message[0][3]       # 4-я буква
-    word2 = secret_message[1][9:13]    # буквы с 10 по 13 включительно
-    word3 = secret_message[2][5:15:2]  # буквы с 6 по 15 через одну
-    word4 = secret_message[3][12:6:-1] # буквы с 8 по 13 в обратном порядке
-    word5 = secret_message[4][20:15:-1] # буквы с 17 по 21 в обратном порядке
-
+    word1 = secret_message[0][3] 
+    word2 = secret_message[1][9:13] 
+    word3 = secret_message[2][5:15:2]  
+    word4 = secret_message[3][12:6:-1] 
+    word5 = secret_message[4][20:15:-1] 
     return f"{word1} {word2} {word3} {word4} {word5}"

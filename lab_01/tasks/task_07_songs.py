@@ -5,7 +5,6 @@
 # -*- coding: utf-8 -*-
 
 def calculate_songs_time():
-    """Вычисляет общее время звучания песен из списка и словаря"""
     violator_songs_list = [
         ['World in My Eyes', 4.86],
         ['Sweetest Perfection', 4.43],
@@ -17,7 +16,6 @@ def calculate_songs_time():
         ['Blue Dress', 4.29],
         ['Clean', 5.83],
     ]
-
     violator_songs_dict = {
         'World in My Eyes': 4.76,
         'Sweetest Perfection': 4.43,
@@ -29,22 +27,17 @@ def calculate_songs_time():
         'Blue Dress': 4.18,
         'Clean': 5.68,
     }
-
-    # Для списка песен: 'Halo', 'Enjoy the Silence' и 'Clean'
     total_time_list = 0
     for song in violator_songs_list:
         if song[0] in ['Halo', 'Enjoy the Silence', 'Clean']:
             total_time_list += song[1]
 
     total_time_list_rounded = round(total_time_list, 2)
-
-    # Для словаря песен: 'Sweetest Perfection', 'Policy of Truth' и 'Blue Dress'
     total_time_dict = (violator_songs_dict['Sweetest Perfection'] + 
                       violator_songs_dict['Policy of Truth'] + 
                       violator_songs_dict['Blue Dress'])
     
     total_time_dict_rounded = round(total_time_dict, 2)
-
     return {
         'list_songs_time': total_time_list_rounded,
         'dict_songs_time': total_time_dict_rounded,

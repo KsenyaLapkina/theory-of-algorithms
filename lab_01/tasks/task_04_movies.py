@@ -13,9 +13,7 @@
 # как указано в задании!
 
 def get_movies_by_index():
-    """Получает фильмы из строки с помощью индексации"""
     my_favorite_movies = 'Терминатор, Пятый элемент, Аватар, Чужие, Назад в будущее'
-    
     first_movie = my_favorite_movies[:10]
     last_movie = my_favorite_movies[-15:]
     second_movie = my_favorite_movies[12:25]

@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 def create_sweets_price_dict():
-    """Создает словарь цен на сладости с минимальными ценами по магазинам"""
     shops = {
         'ашан': [
             {'name': 'печенье', 'price': 10.99},
@@ -24,7 +23,6 @@ def create_sweets_price_dict():
         ],
     }
 
-    # Создаем словарь для хранения всех цен по продуктам
     product_prices = {}
     
     for shop_name, products in shops.items():
@@ -37,7 +35,6 @@ def create_sweets_price_dict():
             
             product_prices[name].append({'shop': shop_name, 'price': price})
     
-    # Сортируем цены по возрастанию и берем 2 минимальные
     sweets = {}
     for product_name, prices in product_prices.items():
         sorted_prices = sorted(prices, key=lambda x: x['price'])
