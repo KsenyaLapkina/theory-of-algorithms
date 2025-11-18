@@ -82,7 +82,7 @@ def show_history(db):
     """Показывает историю расчетов"""
     print("\n" + "="*50)
     print("ПОСЛЕДНИЕ РАСЧЕТЫ:")
-    history = db.get_calculation_history()[:3]  # Последние 3 расчета
+    history = db.get_calculation_history()[:3]  
     
     if not history:
         print("История расчетов пуста")
@@ -130,8 +130,8 @@ def save_to_excel(jacket, pants, suit):
     ws.cell(row=2, column=3, value=f"Подклад: {'да' if jacket.has_liner else 'нет'}")
     ws.cell(row=2, column=4, value=jacket.calculate_fabric_consumption())
     ws.cell(row=2, column=5, value=jacket.calculate_fabric_cost())
-    ws.cell(row=2, column=6, value=1500.0)  # Понижено с 2000
-    ws.cell(row=2, column=7, value=jacket.buttons_count * 50)  # Понижено с 100
+    ws.cell(row=2, column=6, value=1500.0)  
+    ws.cell(row=2, column=7, value=jacket.buttons_count * 50) 
     ws.cell(row=2, column=8, value=jacket.calculate_sewing_cost())
     
     # Данные брюк
@@ -142,14 +142,14 @@ def save_to_excel(jacket, pants, suit):
     ws.cell(row=3, column=3, value=pants_type_name)
     ws.cell(row=3, column=4, value=pants.calculate_fabric_consumption())
     ws.cell(row=3, column=5, value=pants.calculate_fabric_cost())
-    ws.cell(row=3, column=6, value=1200.0)  # Понижено с 1500
-    ws.cell(row=3, column=7, value=200 if pants.has_belt_loops else 0)  # Понижено с 300
+    ws.cell(row=3, column=6, value=1200.0) 
+    ws.cell(row=3, column=7, value=200 if pants.has_belt_loops else 0)  
     ws.cell(row=3, column=8, value=pants.calculate_sewing_cost())
     
     # Данные костюма
     ws.cell(row=4, column=1, value='Костюм-тройка')
     ws.cell(row=4, column=2, value='Комплект')
-    ws.cell(row=4, column=3, value='Полный комплект')  # Убрано "со скидкой"
+    ws.cell(row=4, column=3, value='Полный комплект')  
     ws.cell(row=4, column=8, value=suit.calculate_total_cost())
     
     # Итог
