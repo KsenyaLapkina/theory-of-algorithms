@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Генератор</title>
+</head>
+<body>
+    <h2>Три задания:</h2>
+    
+    <div>
+        <h3>1. Генерация сочетаний из трех цифр:</h3>
+        <label>Количество (макс. 1000): </label>
+        <input type="number" id="comboCount" value="50" min="1" max="1000">
+        <button onclick="testTask1()">Выполнить задание 1</button>
+        <pre id="result1">Нажмите кнопку</pre>
+    </div>
+    
+    <div>
+        <h3>2. Значения функции f(x) = -1.5x + 2:</h3>
+        <button onclick="testTask2()">Выполнить задание 2</button>
+        <pre id="result2">Нажмите кнопку</pre>
+    </div>
+    
+    <div>
+        <h3>3. Сортировка словаря по убыванию ключей:</h3>
+        <button onclick="testTask3()">Выполнить задание 3</button>
+        <pre id="result3">Нажмите кнопку</pre>
+    </div>
+    
+    <script>
+        const API_URL = 'http://localhost:5629';
+        
+        async function testTask1() {
+            const countInput = document.getElementById('comboCount');
+            const count = parseInt(countInput.value);
+            
+            if (isNaN(count) || count < 1 || count > 1000) {
+                alert('Введите число от 1 до 1000');
+                return;
+            }
+            
+            document.getElementById('result1').textContent = 'Загрузка...';
+            
+            try {
+                const response = await fetch(API_URL + '/task1', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `count=${count}`
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    document.getElementById('result1').textContent = data.output;
+                } else {
+                    document.getElementById('result1').textContent = 'Ошибка: ' + data.error;
+                }
+            } catch (error) {
+                document.getElementById('result1').textContent = 'Ошибка соединения: ' + error.message;
+            }
+        }
+        
+        async function testTask2() {
+            document.getElementById('result2').textContent = 'Загрузка...';
+            
+            try {
+                const response = await fetch(API_URL + '/task2', {
+                    method: 'POST'
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    document.getElementById('result2').textContent = data.output;
+                } else {
+                    document.getElementById('result2').textContent = 'Ошибка: ' + data.error;
+                }
+            } catch (error) {
+                document.getElementById('result2').textContent = 'Ошибка соединения: ' + error.message;
+            }
+        }
+        
+        async function testTask3() {
+            document.getElementById('result3').textContent = 'Загрузка...';
+            
+            try {
+                const response = await fetch(API_URL + '/task3', {
+                    method: 'POST'
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    document.getElementById('result3').textContent = data.output;
+                } else {
+                    document.getElementById('result3').textContent = 'Ошибка: ' + data.error;
+                }
+            } catch (error) {
+                document.getElementById('result3').textContent = 'Ошибка соединения: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
